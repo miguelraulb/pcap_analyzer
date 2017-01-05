@@ -11,7 +11,7 @@ use NetPacket::Ethernet;
 use NetPacket::IP;
 use NetPacket::TCP;
 use NetPacket::UDP;
-use NetPacket::ICMP;
+use ICMP;
 
 my $file	= "";
 my $ftp_info	= "";
