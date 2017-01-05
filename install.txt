@@ -1,0 +1,37 @@
+Requirements to run pcap_analyzer.pl correctly:
+
+Perl v 5.20 or higher (not tested on Perl 6)
+
+CPAN modules:
+
+Net::TcpDumpLog
+NetPacket::Ethernet
+NetPacket::IP
+NetPacket::TCP
+NetPacket::UDP
+NetPacket::ICMP
+
+NOTE: On the last day of development of this tool (Jan 4th 2017), I discovered
+a bug on the NetPacket::ICMP module where is not able to extract ICMP data correctly
+due to 4 unused bytes (missing perhaps of the nature, however the RFC states these are mandatory)
+between the ICMP headers and the data, hence the decoding of the information is not performed correctly.
+
+In order to fix this issue, an extra 'N' value was added to the unpack method of ICMP
+module (line 140 of the original module) to capture 4 bytes of data and stored on the
+temporary "$self->{padding}" object:
+
+($self->{type}, $self->{code}, $self->{cksum}, $self->{padding}, $self->{data}) =
+    unpack("CCnNa*", $pkt);
+  }
+
+The original values are:
+
+($self->{type}, $self->{code}, $self->{cksum}, $self->{data}) =
+    unpack("CCna*", $pkt);
+  }
+
+I have submitted a fix for this issue, however it has not been fixed so far, thus I'm adding
+a local copy of the module within the NetPacket folder where the patched ICMP.pm file
+is contained, though the installation of the original module is performed.
+
+The purpose of this is to remove the local folder when the original module is fixed.
