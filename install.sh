@@ -8,3 +8,4 @@ then
   echo "Done!"
 else
   echo "Error installing CPAN modules, try to run this script again"
+fi
