@@ -1,6 +1,6 @@
-# pcap_analyzer
+# H1 pcap_analyzer
 
-Usage: pcap_analyzer.pl [OPTIONS] -f <pcap_file.pcap>
+Usage: pcap_analyzer.pl [OPTIONS] -f *pcap_file.pcap*
 
 Options:
 
