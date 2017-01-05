@@ -15,6 +15,8 @@ In order to install the modules please run the command (with root privileges):
 
 cpan -i use Net::TcpDumpLog NetPacket::Ethernet NetPacket::IP NetPacket::TCP NetPacket::UDP NetPacket::ICMP;
 
+The "install.sh" script, installs the modules by just running it with either sudo or a privileged user.
+
 
 NOTE: On the last day of development of this tool (Jan 4th 2017), I discovered
 a bug on the NetPacket::ICMP module where is not able to extract ICMP data correctly
