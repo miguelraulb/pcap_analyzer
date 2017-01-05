@@ -1,4 +1,5 @@
-# H1 pcap_analyzer
+pcap_analyzer
+-------------
 
 Usage: pcap_analyzer.pl [OPTIONS] -f *pcap_file.pcap*
 
@@ -14,3 +15,9 @@ Options:
 
 PCAP File:
 Packet capture file to read. Must be a capture file generated previously with libpcap.
+
+Author
+------
+
+Miguel 'Mike' Bautista
+© 2017
