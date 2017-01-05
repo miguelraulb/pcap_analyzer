@@ -3,6 +3,7 @@
 use strict;
 use warnings;
 
+use lib './NetPacket/';
 use Getopt::Long qw(GetOptions);
 
 use Net::TcpDumpLog;
@@ -29,7 +30,6 @@ Options:
 	-T -ftp - Get information about FTP requests and responses seen
 	-P -http - Get information about HTTP requests seen
 	-N -dns - Get matched pairs of DNS queries and answers
-	-X -extra - Extra information
 	-d -debug - Enables debugged output (for development use only)
 	-h -? -help  - Prints this help
 
@@ -147,7 +147,7 @@ sub print_icmp_results{
 		}
 	}
 
-	print "\nICMP destination: ";
+	print "\nICMP destinations: ";
 	my $total_destination = keys %icmp_destination;
 	foreach my $destination (keys %icmp_destination){
 		print "$destination";
@@ -233,12 +233,6 @@ sub print_dns_results{
 		}
 	}
 }
-
-#sub print_extra_results{
-#	print "############# TCP ##############\n";
-#	print "TCP connection attempts: $tcp_attempts\n";
-#}
-
 
 sub main(){
 	my $pcap_file = Net::TcpDumpLog->new();
@@ -432,7 +426,6 @@ sub main(){
 	print_ftp_results(\@ftp_packets,$ftp_count_request,$ftp_count_response) if $ftp_info;
 	print_http_results(\@http_packets,$http_count_request) if $http_info;
 	print_dns_results(\%dns_packets,$dns_count_query,$dns_count_answer) if $dns_info;
-	#print_extra_results() if $extra_info;
 }
 
 main();
